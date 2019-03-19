@@ -13,6 +13,16 @@ This extension is for converting between lists of bytes and strings of different
 | `bytes-to-string` | `byteList`      | Convert `byteList` into a UTF-8-encoded string.  Throws an error if `byteList` contains any values that are not numbers between -128 and 127.
 | `string-to-bytes` | `string`        | Decode `string` to a list of UTF-8-encoded bytes.
 
+## Usage
+
+### Encoding a string as base64
+
+`(encode:bytes-to-base64 (encode:string-to-bytes my-string))`
+
+### Decoding base64 into a string
+
+`(encode:bytes-to-string (encode:base64-to-bytes my-base64))`
+
 ## Building
 
 Open it in SBT.  If you successfully run `package`, `encode.jar` is created.
