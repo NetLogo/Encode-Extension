@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This extension is for converting between lists of bytes and strings of different encodings.  This is particularly useful for, say, taking binary data and turning it into a base64 string that can be easily passed around, or reading base64 data, converting it to a list of bytes, and manipulating those bytes.
+This NetLogo extension is for converting between lists of bytes and strings of different encodings.  This is particularly useful for, say, taking binary data and turning it into a base64 string that can be easily passed around, or reading base64 data, converting it to a list of bytes, and directly manipulating those bytes.
 
 ## Primitives
 
