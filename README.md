@@ -9,8 +9,8 @@ This NetLogo extension is for converting between lists of bytes and strings of d
 | Prim Name         | Arguments       | Behavior
 | ----------------- | --------------- | --------
 | `base64-to-bytes` | `base64String`  | Decode `base64String` from base64 encoding to a list of bytes.
-| `bytes-to-base64` | `byteList`      | Convert `byteList` into a base64-encoded string.  Throws an error if `byteList` contains any values that are not numbers between -128 and 127.
-| `bytes-to-string` | `byteList`      | Convert `byteList` into a UTF-8-encoded string.  Throws an error if `byteList` contains any values that are not numbers between -128 and 127.
+| `bytes-to-base64` | `byteList`      | Convert `byteList` into a base64-encoded string.  Throws an error if `byteList` contains any values that are not numbers between 0 and 255.
+| `bytes-to-string` | `byteList`      | Convert `byteList` into a UTF-8-encoded string.  Throws an error if `byteList` contains any values that are not numbers between 0 and 255.
 | `string-to-bytes` | `string`        | Decode `string` to a list of UTF-8-encoded bytes.
 
 ## Usage

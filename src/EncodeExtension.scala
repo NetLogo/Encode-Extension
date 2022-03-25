@@ -42,7 +42,7 @@ class EncodeExtension extends DefaultClassManager {
     override def getSyntax = Syntax.reporterSyntax(right = List(Syntax.StringType), ret = Syntax.ListType)
     override def report(args: Array[Argument], context: Context): AnyRef = {
       val vector = args(0).getString.getBytes("UTF-8").toVector
-      val nums   = vector.map(x => Double.box(x.asInstanceOf[Double]))
+      val nums   = vector.map(x => Double.box((x & 0xFF).asInstanceOf[Double]))
       LogoList.fromVector(nums)
     }
   }
@@ -52,8 +52,8 @@ class EncodeExtension extends DefaultClassManager {
     val isLegit = {
       x: AnyRef =>
         x.isInstanceOf[JDouble] &&
-        x.asInstanceOf[JDouble] >= Byte.MinValue &&
-        x.asInstanceOf[JDouble] <= Byte.MaxValue
+        x.asInstanceOf[JDouble] >= 0 &&
+        x.asInstanceOf[JDouble] <= 255
     }
 
     val array = logoList.toVector.toArray
@@ -61,7 +61,7 @@ class EncodeExtension extends DefaultClassManager {
     if (array.forall(isLegit))
       f(array.map(_.asInstanceOf[JDouble].toByte))
     else
-      throw new ExtensionException(s"All elements of the list argument to 'encode:$primName' must be numbers between ${Byte.MinValue} and ${Byte.MaxValue}")
+      throw new ExtensionException(s"All elements of the list argument to 'encode:$primName' must be numbers between 0 and 255")
 
   }
 
