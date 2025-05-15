@@ -1,4 +1,4 @@
-package org.nlogo.extension.encode
+package org.nlogo.extensions.encode
 
 import java.lang.{ Double => JDouble }
 import java.util.Base64
@@ -49,12 +49,12 @@ class EncodeExtension extends DefaultClassManager {
 
   private def reportFromBytes(logoList: LogoList, f: (Array[Byte]) => AnyRef, primName: String): AnyRef = {
 
-    val isLegit = {
-      x: AnyRef =>
-        x.isInstanceOf[JDouble] &&
-        x.asInstanceOf[JDouble] >= 0 &&
+    val isLegit =
+      (x: AnyRef) => {
+        x.isInstanceOf[JDouble]        &&
+        x.asInstanceOf[JDouble] >=   0 &&
         x.asInstanceOf[JDouble] <= 255
-    }
+      }
 
     val array = logoList.toVector.toArray
 
