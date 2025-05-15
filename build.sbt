@@ -1,24 +1,14 @@
-enablePlugins(org.nlogo.build.NetLogoExtension)
+import org.nlogo.build.{ NetLogoExtension, ExtensionDocumentationPlugin }
 
-netLogoExtName := "encode"
+enablePlugins(NetLogoExtension, ExtensionDocumentationPlugin)
 
-netLogoClassManager := "org.nlogo.extension.encode.EncodeExtension"
+name       := "encode"
+version    := "1.0.1"
+isSnapshot := true
 
-netLogoZipSources := false
-
-version := "1.0.1"
-
-scalaVersion := "2.12.8"
-
-scalaSource in Compile := baseDirectory.value / "src"
+scalaVersion := "3.7.0"
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-Xfatal-warnings", "-encoding", "us-ascii")
 
-// The remainder of this file is for options specific to bundled netlogo extensions
-// if copying this extension to build your own, you need nothing past line 14 to build
-// sample-scala.zip
-netLogoTarget :=
-  org.nlogo.build.NetLogoExtension.directoryTarget(baseDirectory.value)
-
-resolvers      += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
-netLogoVersion := "6.2.0-d27b502"
+netLogoVersion      := "7.0.0-beta1-c8d671e"
+netLogoClassManager := "org.nlogo.extension.encode.EncodeExtension"
